@@ -10,11 +10,51 @@ class WelcomeScreen extends StatefulWidget {
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen> {
+class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderStateMixin{
+
+  AnimationController controller;
+  Animation animation;
+
+  @override
+  void initState() {
+    super.initState();
+
+    controller = AnimationController( //remember to call dispose!!!!
+      duration: Duration(seconds: 1),
+      vsync: this, //needs the with SingleTickerProviderStateMixin in the State
+      //upperBound: 100.0,
+    );
+
+    animation = ColorTween(begin: Colors.blueGrey, end: Colors.white).animate(controller);
+
+    //curved animation lets you create smoother more interesting animations
+    //animation = CurvedAnimation(parent: controller, curve: Curves.easeIn); //upperbound has to be 1
+
+    controller.forward(); //moves the animation forward
+
+    //can use this to trigger more interesting animations and infinite loops
+    // animation.addStatusListener((status) {
+    //   print(status);
+    // });
+
+    controller.addListener(() {
+      setState(() { //need this to make the animations run, even if empty
+
+      });
+      //print(animation.value);
+    });
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: animation.value,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(

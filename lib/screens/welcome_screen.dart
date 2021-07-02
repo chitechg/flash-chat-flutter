@@ -2,6 +2,7 @@ import 'package:flash_chat/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
 import 'registration_screen.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 class WelcomeScreen extends StatefulWidget {
   static const String id = 'welcome_screen';
@@ -10,8 +11,8 @@ class WelcomeScreen extends StatefulWidget {
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProviderStateMixin{
-
+class _WelcomeScreenState extends State<WelcomeScreen>
+    with SingleTickerProviderStateMixin {
   AnimationController controller;
   Animation animation;
 
@@ -19,13 +20,15 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
   void initState() {
     super.initState();
 
-    controller = AnimationController( //remember to call dispose!!!!
+    controller = AnimationController(
+      //remember to call dispose!!!!
       duration: Duration(seconds: 1),
       vsync: this, //needs the with SingleTickerProviderStateMixin in the State
       //upperBound: 100.0,
     );
 
-    animation = ColorTween(begin: Colors.blueGrey, end: Colors.white).animate(controller);
+    animation = ColorTween(begin: Colors.blueGrey, end: Colors.white)
+        .animate(controller);
 
     //curved animation lets you create smoother more interesting animations
     //animation = CurvedAnimation(parent: controller, curve: Curves.easeIn); //upperbound has to be 1
@@ -38,8 +41,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
     // });
 
     controller.addListener(() {
-      setState(() { //need this to make the animations run, even if empty
-
+      setState(() {
+        //need this to make the animations run, even if empty
       });
       //print(animation.value);
     });
@@ -70,13 +73,30 @@ class _WelcomeScreenState extends State<WelcomeScreen> with SingleTickerProvider
                     height: 60.0,
                   ),
                 ),
-                Text(
-                  'Flash Chat',
-                  style: TextStyle(
-                    fontSize: 45.0,
-                    fontWeight: FontWeight.w900,
-                  ),
+                AnimatedTextKit(
+                  animatedTexts: [
+                    TypewriterAnimatedText(
+                      'Flash Chat',
+                      textStyle: TextStyle(
+                        fontSize: 45.0,
+                        fontWeight: FontWeight.w900,
+                      ),
+                      speed: const Duration(milliseconds: 100),
+                    ),
+                  ],
+                  totalRepeatCount: 2,
+                  pause: const Duration(milliseconds: 2000),
+                  displayFullTextOnTap: true,
+                  stopPauseOnTap: true,
                 ),
+
+                // Text(
+                //   'Flash Chat',
+                //   style: TextStyle(
+                //     fontSize: 45.0,
+                //     fontWeight: FontWeight.w900,
+                //   ),
+                // ),
               ],
             ),
             SizedBox(

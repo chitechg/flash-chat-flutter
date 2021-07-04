@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "117209193230",
+    "project_id": "flash-chat-8882c",
+    "storage_bucket": "flash-chat-8882c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:117209193230:android:97e74108cec1e73dcd155f",
+        "android_client_info": {
+          "package_name": "com.cimbyote.flash_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "117209193230-6s5p1hhrg8avc0j3t7fh0b7rpnitnpkg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlTlk7KHVl1hCw2XgS4QzXggZuSf_f3xc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "117209193230-6s5p1hhrg8avc0j3t7fh0b7rpnitnpkg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
